@@ -1,7 +1,7 @@
 package p2022_01_07;
 
 class Parent {
-	public void parentPrn() {
+	public void parentPrn() {		// 부모 클래스
 		System.out.println("슈퍼 클래스 : ParentPrn 메서드");
 	}
 }

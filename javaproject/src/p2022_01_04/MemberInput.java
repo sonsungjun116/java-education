@@ -50,7 +50,7 @@ public class MemberInput {
 }
 
 // DTO(Data Transfer Object)
-class MemberInfo {
+class MemberInfo extends Object {
 	private String name;
 	private int age;
 	private String email;

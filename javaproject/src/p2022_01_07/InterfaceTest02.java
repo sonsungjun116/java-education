@@ -22,7 +22,7 @@ class SubClass02 implements IHello02, IGoodBye02 {
 class InterfaceTest02 {
 	public static void main(String[] args) {
 		SubClass02 test = new SubClass02();
-		test.sayHello("홍길동");
+		test.sayHello("홍길종");
 		test.sayGoodBye("이순신");
 	}
 }
