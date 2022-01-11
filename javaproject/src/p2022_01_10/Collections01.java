@@ -15,6 +15,7 @@ class Collections01 {
 //	length - 배열의 크기, length() - 문자열의 길이, size()-인터페이스 길이
 	
 	System.out.println("요소의 갯수->"+set.size());	//	 0
+	
 //	add(Object e) : Object e = new String("하나");
 	set.add(new String("하나"));			//업 캐스팅
     set.add(2);
