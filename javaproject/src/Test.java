@@ -12,8 +12,10 @@ public class Test {
 		 System.out.println("자바 출력 성공1"); 
 		 System.out.println("자바 출력 성공2"); 
 		 System.out.println("자바 출력 성공3"); 
-	
+	while(true) {
 	Date d = new Date();
+	System.out.println(d);
+	}
 	}
 
 }

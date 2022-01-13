@@ -20,7 +20,7 @@ public class ThreadLife implements Runnable{
 		// 세 번째 Thread 생성
 		Thread third = new Thread( tl, "third1" );
 		
-		second.start();
+		second.start();		// 실행 가능한 상태(runnable 상태)
 		first.start();
 		third.start();
     }
