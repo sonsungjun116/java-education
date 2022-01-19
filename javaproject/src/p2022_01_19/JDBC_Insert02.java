@@ -1,4 +1,4 @@
-package p2022_01_18;
+package p2022_01_19;
 
 import java.io.BufferedReader;  // 도스 콘솔 창에서 사용자 입력을 받아들이기 위해 BufferedReader 
 import java.io.InputStreamReader;
@@ -31,8 +31,8 @@ public static void main(String[] args) {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
       System.out.println(" customer 테이블에 값 입력하기 .....");
-//      System.out.print(" 번호 입력: ");
-//      no = br.readLine().trim();	  
+      System.out.print(" 번호 입력: ");
+      no = br.readLine().trim();	  
       System.out.print(" 이름 입력: ");
       name = br.readLine().trim();            //테이블에 추가할 name 필드 값을 입력 받음
       System.out.print(" 이메일 입력: ");
@@ -41,20 +41,20 @@ public static void main(String[] args) {
       tel = br.readLine().trim();               //테이블에 추가할 tel 필드 값을 입력 받음
       System.out.println("주소를 입력 하세요?");
       address = br.readLine().trim();
-//	  int ino = Integer.parseInt(no);
+	  int ino = Integer.parseInt(no);
       
 	  Timestamp ts = new Timestamp(System.currentTimeMillis());
 	  
       // INSERT 쿼리문을 작성
-	  sql = "INSERT into customer values (customer_no_seq.nextval,?,?,?,?,sysdate)";
+	  sql = "INSERT into customer (no, name, email, tel, address, reg_date) values (?, ?, ?, ?,?,?)";
 
 	  pstmt = con.prepareStatement( sql );
-//	  pstmt.setInt(1, ino);
-	  pstmt.setString(1, name);
-	  pstmt.setString(2, email);
-	  pstmt.setString(3, tel);
-	  pstmt.setString(4, address);
-//	  pstmt.setTimestamp(5, ts);
+	  pstmt.setInt(1, ino);
+	  pstmt.setString(2, name);
+	  pstmt.setString(3, email);
+	  pstmt.setString(4, tel);
+	  pstmt.setString(5, address);
+	  pstmt.setTimestamp(6, ts);
 	  int result=pstmt.executeUpdate();   
 	  	if(result == 1){
 			 System.out.println(" Data insert success!! ");

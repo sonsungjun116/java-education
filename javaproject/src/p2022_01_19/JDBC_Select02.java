@@ -1,11 +1,9 @@
-package p2022_01_18;
+package p2022_01_19;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 
 class  JDBC_Select02{
   public static void main(String[] args)  {
@@ -18,8 +16,7 @@ class  JDBC_Select02{
     //---JDBC_Select 추가된 내용 -------
     ResultSet  rs   = null;
 	int no = 0; 
-    String name="", email="", tel="", address="";  //데이터베이스에서 얻어온 필드값 저장할 변수 선언
-    Timestamp ts = null;
+    String name="", email="", tel="", address="", ts="";  //데이터베이스에서 얻어온 필드값 저장할 변수 선언
     String sql;               //SQL문을 저장할 변수 선언
 
     try{
@@ -32,20 +29,15 @@ class  JDBC_Select02{
       System.out.printf("-----------------------------------------------------------------\n");
 	  pstmt = con.prepareStatement( sql );
       rs = pstmt.executeQuery();  //얻어진 레코드를 가져옴
-      
-//      회원 가입한 날짜를 년,월,일,시,분,초,요일로 출력 하세요
-      
-      	SimpleDateFormat sd = 
-      			new SimpleDateFormat("yyyy-MM-dd HH:mm:ss EEE요일");
 
-      while( rs.next() ){		//데이터를 1개씩 가져온다.
+      while( rs.next() ){
 		 no = rs.getInt("no"); 
          name = rs.getString("name");  
          email = rs.getString("email");     
          tel   = rs.getString("tel"); 
          address = rs.getString("address");
-         ts = rs.getTimestamp("reg_date");
-        System.out.printf(" %d \t %s \t %s \t %s\t %s\t %s\t  \n", no, name,email,tel,address,sd.format(ts));
+         ts = rs.getTimestamp("reg_date").toString();
+        System.out.printf(" %d \t %s \t %s \t %s\t %s\t %s\t  \n", no, name,email,tel,address,ts);
       } 
     }
     catch(Exception e){

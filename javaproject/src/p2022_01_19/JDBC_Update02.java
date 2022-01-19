@@ -1,4 +1,4 @@
-package p2022_01_18;
+package p2022_01_19;
 
 import java.io.BufferedReader;  // 도스 콘솔 창에서 사용자 입력을 받아들이기 위해 BufferedReader 
 import java.io.InputStreamReader;
@@ -40,15 +40,14 @@ public static void main(String[] args) {
       address = br.readLine();
       Timestamp ts = new Timestamp(System.currentTimeMillis());
       
-	  sql = "UPDATE customer SET name=?, email = ?, tel = ?,";
-	  sql +=" address=?, reg_date=sysdate where no = ?";
+	  sql = "UPDATE customer SET name=?, email = ?, tel = ?, address=?, reg_date=? where no = ?";
 	  pstmt = con.prepareStatement( sql );
 	  pstmt.setString(1, name);
 	  pstmt.setString(2, email);
 	  pstmt.setString(3, tel);
 	  pstmt.setString(4, address);
-//	  pstmt.setTimestamp(5, ts);
-	  pstmt.setInt(5, no);
+	  pstmt.setTimestamp(5, ts);
+	  pstmt.setInt(6, no);
       int result=pstmt.executeUpdate() ;  
       	if(result == 1){
  		 System.out.println(" 데이터 수정 성공!! ");
