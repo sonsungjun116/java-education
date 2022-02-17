@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>String객체</title>
+</head>
+<body>
+
+<script>
+	var name = prompt("당신의 영문 이름을 입력 하세요","");
+	var upper = name.toUpperCase();
+	document.write(upper+"<br>");
+	
+	var num = prompt("핸드폰 번호를 입력 하세요?","");
+	
+	// num = "01012345678";
+//	var result = num.substring(0,7) + "****";
+	var result = num.substr(0,7) + "****";
+	document.write(result+"<br>");
+	
+	
+</script>
+</body>
+</html>
