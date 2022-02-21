@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function check(){
+		var name =document.getElementById("name");
+		var email =document.getElementById("email");
+	
+		if(name.value == ""){
+			alert("이름을 입력 하세요.");
+			name.focus();
+			return false; // 함수를 완전히 빠져나감
+		}	
+		if(email.value == ""){
+			alert("이메일 주소를 입력 하세요.");
+			email.focus();
+			return false;
+		}
+	}
+
+</script>
+</head>
+<body>
+
+<form method="post" action="send.jsp" onSubmit="return check()">
+	이름 : <input type=text id="name" name="name"><br>
+	이메일 : <input type=text id="email" name="email"><br>
+	<input type="submit" value="전송" >
+	
+
+</form>
+</body>
+</html>
