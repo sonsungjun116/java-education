@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="test2.js"></script>
+
+<script>
+	/* function check(){
+		var sel = document.getElementById("sel");
+		
+		if(sel.value == ""){
+			alert("색깔을 선택 하세요.");
+			return false;
+		}
+	
+		document.bgColor = sel.value;
+	} */
+</script>
+	
+</head>
+<body>
+<form method="post" action="gugu.jsp">
+	<h3>보고싶은 구구단은?</h3>
+	<select id="sel" name="sel" onChange="check()">
+		<option value=""></option>
+		<option value="2" id="2">2</option>
+		<option value="3" id="3">3</option>
+		<option value="4" id="4">4</option>
+		<option value="5" id="5">5</option>
+		<option value="6" id="6">6</option>
+		<option value="7" id="7">7</option>
+		<option value="8" id="8">8</option>
+		<option value="9" id="9">9</option>
+		
+	
+	</select>
+	<input type="submit" value="확인" onClick="check()" >
+</form>
+</body>
+</html>
