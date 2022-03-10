@@ -17,7 +17,7 @@
 //	regBean.id="test";
 %>
 
-
+<!-- regBean은 주솟값, heap에 데이터값을 넣어놓고 그 데이터에 대한 주소값(regBean)을 넘겨주는게 더 효율적임call by reference -->
 <%
 	LogonDBBean manager = LogonDBBean.getInstance();
 	int result=manager.insertMember(regBean);

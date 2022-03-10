@@ -18,8 +18,8 @@
 
 	LogonDataBean old = manager.updateForm(regBean.getId());
 	
-	if(old.getPasswd().equals(regBean.getPasswd())){	
-		manager.delete(regBean);
+	if(old.getPasswd().equals(regBean.getPasswd())){	// 비번 일치시
+		manager.delete(regBean);	// delete SQL문 실행
 		
 %>	
 	<script>
@@ -27,7 +27,7 @@
 		location.href="list.jsp";
 	</script>
 	
-<% }else{%>
+<% }else{	// 비번 불일치시		%>
 
 	<script>
 		alert("비밀번호가 일치하지 않습니다.");

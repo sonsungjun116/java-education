@@ -32,7 +32,7 @@ List<LogonDataBean> li = manager.selectMember();
 
 
 	for(int i = 0; i < li.size(); i++) {
-		LogonDataBean db = (LogonDataBean)li.get(i);
+		LogonDataBean db = (LogonDataBean)li.get(i); //다운캐스팅이여서 (LogonDataBean)을 표시해 놓았지만 제너릭을 쓰고 있기때문에 괄호를 생략해도 된다
 %>
 
 	<tr><td><%=db.getId()%></td>

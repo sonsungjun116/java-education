@@ -1,4 +1,5 @@
 select * from tab;
+select * from member2;
 
 create  table  member1( 
 			 id varchar2(12) primary key,
