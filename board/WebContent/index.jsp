@@ -8,12 +8,8 @@
 </head>
 <body>
 
-회원 관리 프로그램
+일반 게시판 프로그램
 
-<script>
-	location.href="member/main.jsp";
-
-</script>
 
 </body>
 </html>
