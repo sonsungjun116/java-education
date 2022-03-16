@@ -26,7 +26,7 @@
 	int currentPage = Integer.parseInt(pageNum);
 	
 	// startRow : 각 page에 출력할 데이터의 시작번호
-	//	endRow : 각 page에 출력할 데이터의 끝번호
+	// endRow : 각 page에 출력할 데이터의 끝번호
 	// page = 1 : startRow=1, endRow=10
 	// page = 2 : startRow=11, endRow=20
 	// page = 3 : startRow=21, endRow=30
@@ -77,7 +77,12 @@
 			BoardDataBean board = (BoardDataBean)list.get(i); // 괄호는 위에서 제너릭 처리를해서 생략해도 된다
 %>		<tr>	
 			<td><%=number-- %></td>
-			<td><%=board.getSubject() %></td>
+			<td>
+
+<a href="content.jsp?num=<%=board.getNum()%>&page=<%=currentPage%>">			
+			<%=board.getSubject() %>
+</a>
+			</td>
 			<td><%=board.getWriter() %></td>
 			<td><%=sd.format(board.getReg_date()) %></td>
 			<td><%=board.getReadcount() %></td>
@@ -88,9 +93,7 @@
 %>	
 				
 		</table>
-		
-		
-		
+				
 <% } %>
 
 <!-- 페이지 링크 설정 -->
@@ -107,9 +110,46 @@ if(count > 0) {
 	int block = 10;	// 1개의 블럭의 크기 : 10개의 페이지로 구성
 	int endPage = startPage + block -1;
 	
+	// 가장 마지막 블럭에 endPage값을 pageCount로 수정 --> 실제 존재하는 페이지까지만 출력하게 함
+	if(endPage > pageCount){
+		endPage = pageCount;
+	}
 	
-}
+%>	
+	<!-- 1page로 이동 -->
+	<a href="list.jsp?page=1" style="text-decoration:none"> << </a>
+	
+<%	
+	// 이전 블럭으로 이동
+	if(startPage > 10) {
+%>		
+	<a href="list.jsp?page=<%=startPage - 10%>"> [이전] </a>	
+<% 	}
 
+	// 각 블럭당 10개의 페이지 출력
+	for(int i=startPage; i<=endPage; i++){
+		if(i == currentPage){	// 현재 페이지
+%>		
+			[<%=i %>]
+<%		}else{ %>
+			<a href="list.jsp?page=<%=i%>">[<%=i %>]</a>
+<%		}
+		
+	}	// for end
+	
+		
+	// 다음 블럭으로 이동
+	if(endPage < pageCount){
+%>		
+		<a href="list.jsp?page=<%=startPage+10%>"> [다음]</a>
+		
+<% 	}%>
+	
+	<!-- 마지막 페이지로 이동 -->
+		<a href="list.jsp?page=<%=pageCount%>" 
+			style="text-decoration:none"> >> </a>
+<% 	
+}
 %>
 
 

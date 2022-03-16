@@ -8,7 +8,7 @@ create table board0(
 	writer varchar2(20) not null,
 	email varchar2(30),
 	subject varchar2(50) not null,
-	passwd varchar2(20) not null,
+	passwd varchar2(20) not null, 
 	reg_date timestamp not null,
 	readcount number default 0,
 	content varchar2(2000) not null,
