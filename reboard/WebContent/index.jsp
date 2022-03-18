@@ -8,11 +8,7 @@
 </head>
 <body>
 
-일반 게시판 프로그램
-
-<script>
-	location.href="board/list.jsp";
-</script>
+댓글 게시판
 
 </body>
 </html>
