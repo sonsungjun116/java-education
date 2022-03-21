@@ -1,5 +1,19 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ include file="color.jsp"%>
+<%@page import="reboard.BoardDataBean"%>
+<%@page import="reboard.BoardDBBean"%>
+
+<%
+	int num = Integer.parseInt(request.getParameter("num"));
+	String nowpage = request.getParameter("page");
+	
+	BoardDBBean dao = BoardDBBean.getInstance();
+	
+	// 상세 정보 구하기
+	BoardDataBean board = dao.getContent(num);
+	
+%>
+
 <html>
 <head>
 <title>게시판</title>
@@ -8,55 +22,48 @@
 <script src="check.js"></script>
 </head>
 
-<% 
-  int num=0,ref=1,re_step=0,re_level=0;	// 원문
- /*  try{  
-    if(request.getParameter("num")!=null){  // 답글
-	num=Integer.parseInt(request.getParameter("num"));
-	ref=Integer.parseInt(request.getParameter("ref"));
-	re_step=Integer.parseInt(request.getParameter("re_step"));
-	re_level=Integer.parseInt(request.getParameter("re_level"));
-	} */
-%>
+
    
 <body bgcolor="<%=bodyback_c%>">  
-<center><b>글쓰기</b>
+<center><b>글수정</b>
 <br>
-<form method="post"  action="writePro.jsp">
+<form method="post"  action="updatePro.jsp">
 <input type="hidden" name="num" value="<%=num%>">
-<input type="hidden" name="ref" value="<%=ref%>">
-<input type="hidden" name="re_step" value="<%=re_step%>">
-<input type="hidden" name="re_level" value="<%=re_level%>">
+<input type="hidden" name="page" value="<%=nowpage%>">
+<input type="hidden" name="ref" value="<%=board.getRef()%>">
+<input type="hidden" name="re_step" value="<%=board.getRe_step()%>">
+<input type="hidden" name="re_level" value="<%=board.getRe_level()%>">
 
 <table width="400" border="1" cellspacing="0" cellpadding="0"  bgcolor="<%=bodyback_c%>" align="center">
    <tr>
     <td align="right" colspan="2" bgcolor="<%=value_c%>">
-	    <a href="list.jsp"> 글목록</a> 
+	    <a href="list.jsp?page=<%=nowpage%>"> 글목록</a> 
    </td>
    </tr>
    <tr>
     <td  width="70"  bgcolor="<%=value_c%>" align="center">이 름</td>
     <td  width="330">
-       <input type="text" size="10" maxlength="10" id="writer" name="writer"></td>
+       <input type="text" size="10" maxlength="10" id="writer" 
+       name="writer" value="<%=board.getWriter() %>"></td>
   </tr>
   <tr>
     <td  width="70"  bgcolor="<%=value_c%>" align="center" >제 목</td>
     <td  width="330">
-    <%if(request.getParameter("num")==null){%> <!--  원문 -->
-       <input type="text" size="40" maxlength="50" id="subject" name="subject"></td>
-	<%}else{%>									<!-- 답글 -->
-	   <input type="text" size="40" maxlength="50" id="subject" name="subject" value="[답변]"></td>
-	<%}%>
+    
+       <input type="text" size="40" maxlength="50" id="subject"
+		name="subject" value="<%=board.getSubject() %>"></td>
+	
   </tr>
   <tr>
     <td  width="70"  bgcolor="<%=value_c%>" align="center">Email</td>
     <td  width="330">
-       <input type="text" size="40" maxlength="30" id="email" name="email" ></td>
+       <input type="text" size="40" maxlength="30" id="email" 
+       		name="email" value="<%=board.getEmail() %>" ></td>
   </tr>
   <tr>
     <td  width="70"  bgcolor="<%=value_c%>" align="center" >내 용</td>
     <td  width="330" >
-     <textarea id="content" name="content" rows="13" cols="40"></textarea> </td>
+     <textarea id="content" name="content" rows="13" cols="40"><%=board.getContent() %></textarea> </td>
   </tr>
   <tr>
     <td  width="70"  bgcolor="<%=value_c%>" align="center" >비밀번호</td>
@@ -66,9 +73,10 @@
   </tr>
 <tr>      
  <td colspan=2 bgcolor="<%=value_c%>" align="center"> 
-  <input type="submit" value="글쓰기" >  
+  <input type="submit" value="글수정" >  
   <input type="reset" value="다시작성">
-  <input type="button" value="목록보기" OnClick="window.location='list.jsp'">
+  <input type="button" value="목록보기" 
+  		OnClick="window.location='list.jsp?page=<%=nowpage%>'">
 </td></tr></table>    
     
 </form>      

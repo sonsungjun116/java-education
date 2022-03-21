@@ -9,7 +9,7 @@
 	// 1. 한 화면에 출력할 데이터 갯수
 	int page_size = 10;
 
-	String pageNum = request.getParameter("paga");
+	String pageNum = request.getParameter("page");
 	if(pageNum == null){
 		pageNum = "1";		// 1 page : 최근글이 보이는 페이지
 	}
