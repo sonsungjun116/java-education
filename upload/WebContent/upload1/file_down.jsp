@@ -42,7 +42,7 @@
    		int numRead;
 
    		// 바이트 배열b의 0번 부터 numRead번 까지 브라우저로 출력
-   		while((numRead = in.read(b, 0, b.length)) != -1) { // 끝에 도달하면 -1이 리턴됨
+   		while((numRead = in.read(b, 0, b.length)) != -1) {
     		out2.write(b, 0, numRead);
    		}
    		out2.flush(); 
