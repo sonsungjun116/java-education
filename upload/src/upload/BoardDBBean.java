@@ -2,6 +2,7 @@
 
 package upload;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -240,5 +241,83 @@ String sql="select * from (select rownum rnum, upload.* from ";
 		
 		return board;
 	}
+	
+	// 글수정
+	public int update(BoardDataBean board) {
+		int result = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = getConnection();
+			
+			String sql="update upload set writer=?,email=?,subject=?, ";
+					sql+="content=?,ip=?,upload=? where num=?";
+					
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, board.getWriter());
+			pstmt.setString(2, board.getEmail());
+			pstmt.setString(3, board.getSubject());
+			pstmt.setString(4, board.getContent());
+			pstmt.setString(5, board.getIp());
+			pstmt.setString(6, board.getUpload());
+			pstmt.setInt(7, board.getNum());
+			
+			result = pstmt.executeUpdate();		// SQL문 실행
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt != null) try{ pstmt.close();}catch(Exception e) {}
+			if(con != null) try{ con.close();}catch(Exception e) {}
+		}
+		
+		return result;
+	}
+	
+	
+	// 글삭제 + 첨부 파일 삭제
+	public int delete(BoardDataBean upload, String path) {
+		int result = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = getConnection();
+			
+			String sql="delete from upload where num=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, upload.getNum());
+			result = pstmt.executeUpdate();		// SQL문 실행	
+			
+			if(upload.getUpload() != null) {		// 첨부 파일이 있으면
+				
+				File file = new File(path);
+				
+				// upload 디렉토리의 모든 파일을 읽어온다.
+				File[] f = file.listFiles();
+				
+				for(int i=0; i<f.length; i++) {
+					//upload 디렉토리에 저장된 파일 중에서 db에 저장된 파일명과 일치하는 파일을 삭제한다.
+					if(f[i].getName().equals(upload.getUpload())) {
+						f[i].delete();			// 첨부 파일 삭제
+					}
+				}
+				
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt != null) try{ pstmt.close();}catch(Exception e) {}
+			if(con != null) try{ con.close();}catch(Exception e) {}
+		}
+		
+		
+		return result;
+	}
+	
 	
 }

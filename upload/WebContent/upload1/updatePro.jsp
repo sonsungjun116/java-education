@@ -37,7 +37,8 @@
 	// 실제 서버에 저장된 파일명
 	String upload = multi.getFilesystemName("upload");
 	
-	BoardDataBean board = new BoardDataBean();		// usebean을 사용할수 없음
+	BoardDataBean board = new BoardDataBean();// usebean을 사용할수 없음
+	board.setNum(num);
 	board.setWriter(writer);
 	board.setEmail(email);
 	board.setSubject(subject);
@@ -64,7 +65,8 @@
 %>
 		<script>
 		alert("글수정 성공");
-		location.href="list.jsp?page=<%=nowpage%>";
+		<%-- location.href="list.jsp?page=<%=nowpage%>"; --%>
+		location.href="content.jsp?num=<%=num%>&page=<%=nowpage%>";
 		</script>
 <% } 
 	

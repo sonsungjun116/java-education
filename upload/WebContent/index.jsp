@@ -9,6 +9,9 @@
 <body>
 
 자료실 게시판
+<script>
+location.href="upload1/list.jsp";
+</script>
 
 </body>
 </html>

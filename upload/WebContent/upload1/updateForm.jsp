@@ -28,8 +28,8 @@
 <br>
 <form method="post" name="writeform" action="updatePro.jsp"
 		enctype="multipart/form-data">
-<input type="hidden" name="num" value"<%=num%>">
-<input type="hidden" name="page" value"<%=nowpage%>">
+<input type="hidden" name="num" value="<%=num%>">
+<input type="hidden" name="page" value="<%=nowpage%>">
 
 <table width="430" border="1" cellspacing="0" cellpadding="0"  bgcolor="<%=bodyback_c%>" align="center">
    <tr>
@@ -75,9 +75,10 @@
   </tr>
 <tr>      
  <td colspan=2 bgcolor="<%=value_c%>" align="center"> 
-  <input type="submit" value="글쓰기" >  
+  <input type="submit" value="글수정" >  
   <input type="reset" value="다시작성">
-  <input type="button" value="목록보기" OnClick="location.href='list.jsp'">
+  <input type="button" value="목록보기" 
+  OnClick="location.href='list.jsp?page=<%=nowpage%>'">
 </td></tr></table>    
    
 </form>      
