@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class HelloWorld1
@@ -21,8 +22,11 @@ public class HelloWorld1 extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// 현재 문서의 한글값을 인코딩(utf-8)을 시켜준다.
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter(); // 출력 스트림 객체
+		HttpSession session = request.getSession();	// 세션 객체
+		
 		out.println("<html>");
 		out.println("<body>");
 		out.println("<h1>안녕하세요?</h1>");

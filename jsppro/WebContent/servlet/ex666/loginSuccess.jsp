@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<title>Insert title here</title>
 	<script>
-	top.leftFrame.location.href="ex66/menu.jsp";
+	top.leftFrame.location.href="/jsppro/servlet/ex666/menu.jsp";
 	</script>
 	</head>
 	<body>
