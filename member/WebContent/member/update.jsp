@@ -24,7 +24,7 @@
  	MemberDAO dao = MemberDAO.getInstance();
  	
  	// 한 사람의 상세정보 구하기
- 	MemberDTO old = dao.getMember(member.getId());
+ 	MemberDTO old = dao.getMember(member.getId()); //getId를 받아온 이유는 넘어온 값의 아이디의 원래 값들을 모두 구해오고 이 아이디값의 비밀번호와 현재 입력된 비밀번호를 비교하기 위함이다
  	
  	// 비번 비교
  	if(old.getPasswd().equals(member.getPasswd())){ // old는 데이터베이스 member는 새로 입력한 값

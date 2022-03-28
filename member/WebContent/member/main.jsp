@@ -13,7 +13,7 @@
  		<a href="deleteform.jsp">회원 탈퇴</a><br>
  
  
- <% }else{ 	    // 세션이 없는 경우	%>
+ <% }else{ 	    // 세션이 없는 경우, 초기 시작화면	%>		
  
  		<a href="memberform.html">회원 가입</a><br>
  		<a href="loginform.html">로그인</a><br>

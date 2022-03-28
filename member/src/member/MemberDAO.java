@@ -38,7 +38,7 @@ public class MemberDAO {
 			
 			String sql = "select * from member where id=?";
 			
-			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql);		//SQL문 실행
 			pstmt.setString(1, id);
 			
 			rs = pstmt.executeQuery();		// select SQL문을 실행

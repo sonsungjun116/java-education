@@ -57,11 +57,11 @@ $("input:checkbox[name='hobby'][value='<%=s%>']").attr("checked", true);
 <body>
 
 <form method="post" action="update.jsp"> 
-<input type=hidden name="id" value="<%=member.getId() %>">
+<input type=hidden name="id" value="<%=member.getId() %>"> <!-- member라는 dto에는 세션으로 넘어온 id값에 관한 정보들을 모아 넣어놓은 dto임 -->
 <table border=1 width=450 align="center">
 	<caption>회원 수정 폼</caption>
 	<tr><td>ID</td>
-		<td><%=member.getId() %></td>
+		<td><%=member.getId() %></td> <!-- member라는 dto에서 id값을 불러옴 -->
 	</tr>
 	<tr><td>비밀번호</td>
 		<td><input type=password id="passwd" name="passwd">

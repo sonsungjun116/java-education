@@ -57,7 +57,7 @@ $(document).ready(function(){
 		// 도메인 선택
 		$("#email").change(function(){
 			if($("#email").val()==""){		// 직접 입력 선택
-				$("#domain").attr("readOnly", false);
+				$("#domain").attr("readOnly", false);	// 원래 readonly값이 true이면 수정이 불가능하나 false값이면 수정이 가능하다.
 				$("#domain").val("").focus();
 			}else{							// 도메인을 선택
 				$("#domain").val($("#email").val());
