@@ -13,8 +13,12 @@ import org.apache.catalina.tribes.membership.MemberImpl;
 
 import service.Action;
 import service.ActionForward;
+import service.Delete;
 import service.Idcheck;
+import service.Login;
 import service.MemberInsert;
+import service.Update;
+import service.UpdateMember;
 
 @WebServlet("*.do")  // do 확장자로 요청하는 요청을 받겠다는 의미
 public class MemberController extends HttpServlet {
@@ -23,9 +27,9 @@ public class MemberController extends HttpServlet {
 	// doGet(), doPost() 메소드에서 공통적인 작업을 처리하는 메소드
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String requestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String command = requestURI.substring(contextPath.length());
+		String requestURI = request.getRequestURI(); 	//전체 경로
+		String contextPath = request.getContextPath();	// 현재 프로젝트 명 --> 파일을 잘 못찾아 올때 프로젝트명도 참고 하여 붙인다.
+		String command = requestURI.substring(contextPath.length()); // 인덱스번호 13번부터 끝까지 추출하라
 		
 		System.out.println("requestURI:"+requestURI);   // /model2member/MemberInsert.do
 		System.out.println("contextPath:"+contextPath); // /model2member
@@ -46,7 +50,7 @@ public class MemberController extends HttpServlet {
 		// ID중복 검사(ajax)
 		}else if(command.equals("/Idcheck.do")) {
 			try {
-				action = new Idcheck();
+				action = new Idcheck(); //service패키지 안에 있으므로 임포트
 				forward = action.execute(request, response);
 			}catch(Exception e) {
 				e.printStackTrace();
@@ -57,6 +61,62 @@ public class MemberController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("./member/memberform.jsp");
+		
+		// 로그인(회원인증)
+		}else if(command.equals("/Login.do")) {
+			try {
+				action = new Login();		//service패키지 안에 있으므로 임포트
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			//로그인 폼
+			
+		}else if(command.equals("/LoginForm.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./member/loginform.jsp");
+			
+			// 로그 아웃
+		}else if(command.equals("/Logout.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./member/logout.jsp");
+		
+		// 회원정보 수정폼 --> db를 건드릴 때만 service로 넘어간다
+		}else if(command.equals("/UpdateMember.do")) {
+			try {
+				action = new UpdateMember();
+				forward = action.execute(request, response);
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			//회원정보 수정
+		}else if(command.equals("/Update.do")) {
+			try {
+				action = new Update();
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			// 회원탈퇴 폼
+		}else if(command.equals("/DeleteMember.do")){
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./member/deleteform.jsp");
+		
+		// 회원 탈퇴
+		}else if(command.equals("/Delete.do")) {
+			try {
+				action = new Delete();
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
