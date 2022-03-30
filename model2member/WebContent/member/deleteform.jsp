@@ -17,7 +17,7 @@
 <body>
 
 <form method="post" action="<%=request.getContextPath() %>/Delete.do"> 
-<input type="hidden" name="id" value="${sessionScope.id}">
+<input type="hidden" name="id" value="${sessionScope.id}"> <!-- delete는 service로 넘어가지 않기 때문에 세션으로 가져와 참고 해야 한다 -->
 <table border=1 width=500 align=center>
 	<caption>회원 삭제</caption>
 	

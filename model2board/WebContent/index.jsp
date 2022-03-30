@@ -8,11 +8,8 @@
 </head>
 <body>
 
-모델2 회원관리
-<script>
-	/* location.href = "member/loginform.jsp"; */
-	location.href = "./LoginForm.do";
-</script>
+
+모델2 게시판
 
 </body>
 </html>
