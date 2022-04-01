@@ -28,7 +28,7 @@ public class BoardListAction implements Action {
 		
 		int startRow = (page - 1) * limit + 1;		// 추출하기 위한 시작 번호, 이 둘은 출력되는 목록의 갯수
 		int endRow = page * limit;					// 끝나는 번호
-		// 이 녀석 들은 게시판 번호들임
+		// 뽑아 오는 순서번호 -- 단 우리는  num--로 설정을 하였기 때문에 큰수부터 10개 뽑아오는 개념이다
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		int listcount = dao.getCount();		// 총 데이터 갯수		기본변수3

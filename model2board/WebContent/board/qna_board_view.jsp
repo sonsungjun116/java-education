@@ -41,9 +41,11 @@
 				<input type="button" value="댓글" 
 onClick="location.href='./BoardReplyAction.do?board_num=${board.board_num}&page=${page}'">
 				
-				<input type="button" value="수정">
+				<input type="button" value="수정" 
+onClick="location.href='./BoardModifyAction.do?board_num=${board.board_num}&page=${page}'">
 				
-				<input type="button" value="삭제">
+				<input type="button" value="삭제"
+onClick="location.href='./BoardDeleteAction.do?board_num=${board.board_num}&page=${page}'">
 				
 				<input type="button" value="목록" 
 onClick="location.href='./BoardListAction.do?page=${page}' ">
