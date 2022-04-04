@@ -32,7 +32,7 @@
 		</td>
 		<td>
 			<!-- 댓글 제목 앞에 여백 처리 -->
-			<c:if test="${b.board_re_lev > 0}">
+			<c:if test="${b.board_re_lev > 0}"> <!-- 댓글이라면 -->
 				<c:forEach var="i" begin="0" end="${b.board_re_lev}">
 					&nbsp;
 				</c:forEach>

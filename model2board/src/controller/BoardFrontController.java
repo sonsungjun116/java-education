@@ -28,9 +28,9 @@ public class BoardFrontController extends HttpServlet {
 	// doGet(), doPost() 메소드에서 공통적인 작업을 처리하는 메소드
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String requestURI = request.getRequestURI();
-		String contextPath = request.getContextPath();
-		String command = requestURI.substring(contextPath.length());
+		String requestURI = request.getRequestURI(); // 프로젝트/파일경로
+		String contextPath = request.getContextPath(); //현재프로젝트 경로
+		String command = requestURI.substring(contextPath.length()); // 파일경로
 		
 		System.out.println("requestURI:" + requestURI);
 		System.out.println("contextPath:" + contextPath);
@@ -113,7 +113,8 @@ public class BoardFrontController extends HttpServlet {
 			forward = new ActionForward();
 			forward.setRedirect(false);     // dispatcher 방식으로 포워딩
 			forward.setPath("./board/qna_board_delete.jsp");
-		// 글삭제
+		
+			// 글삭제
 		}else if(command.equals("/BoardDelete.do")){
 			try {
 				action = new BoardDelete();

@@ -13,7 +13,7 @@ public class BoardDetailAction implements Action {
 		// TODO Auto-generated method stub
 		System.out.println("BoardDetailAction");
 		
-		int board_num = Integer.parseInt(request.getParameter("board_num"));
+		int board_num = Integer.parseInt(request.getParameter("board_num")); //넘어온 boar_num값이 왜 int로 변환해야 하는지??
 		String page = request.getParameter("page");
 		
 		BoardDAO dao = BoardDAO.getInstance();

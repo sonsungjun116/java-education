@@ -228,6 +228,7 @@ String sql="update model2 set board_re_seq=board_re_seq+1 ";
 		// 같은 그룹이면서 댓글인가? 부모의 board_re_seq 보다 크다면
 		// 부모의 ref값이 들어가야 하고 ?에는 0이 들어간다 why? 부모의 seq값은 0이기 때문에 
 		// 부모가 댓글인 경우 - 부모가 댓글인 경우는 부모보다 seq값이 큰 놈들만 1 증가되고 새로 달린 글은 바로 밑으로 들어간다
+		// board_re_seq > ? 조건식에 의해 자식이 아닌 값은 걸러 질 수 밖에 없다.
 		pstmt = con.prepareStatement(sql);
 		pstmt.setInt(1, re_ref);
 		pstmt.setInt(2, re_seq);

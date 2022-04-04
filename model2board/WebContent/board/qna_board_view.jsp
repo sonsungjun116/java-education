@@ -30,7 +30,7 @@
 		<td>
 			<!-- 첨부파일이 있을떄만 첨부파일 출력 -->
 			<c:if test="${board.board_file != null }">
-<a href="./board/file_down.jsp?file_name=${board.board_file }">				
+<a href="./board/file_down.jsp?file_name=${board.board_file }">	<!-- 넘겨 보낼 변수 값을 file_name으로 설정 -->
 				${board.board_file}
 			</a>	
 			</c:if>			
