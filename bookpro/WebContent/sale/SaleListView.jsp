@@ -11,7 +11,7 @@
 <link href="<%=request.getContextPath() %>/css/admin_view.css" rel="stylesheet" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<%@ include file="/book/header.jsp" %>
+<%@ include file="/share/header.jsp" %>
 </head>
 <body>
 
@@ -59,12 +59,10 @@
 		</tr>
 
 
-
 	</table>
-	<br><br><br>
 	
-	<input type="button" value="확인" style="float: center;">
-	<input type="button" value="취소">
+	
+	
 
 
 </body>
@@ -105,10 +103,20 @@
 </c:if>
 </center>
 
+<br><br>
+<table width=100 align=center>
+	<tr align="center">
+	<td width=50><input type="button" value="확인"></td>
+	<td width=50><input type="button" value="취소"></td>
+	</tr>
+</table>	
 
-<br><br><br><br>
 
-<%@ include file="/book/footer.jsp" %>
+<br><br><br>
+
+<%@ include file="/share/footer.jsp" %>
+
+
 
 
 
