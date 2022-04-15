@@ -25,7 +25,7 @@ public class Login implements Action { //implements로 상속받는다면 부모
 		String id = request.getParameter("id");
 		String passwd = request.getParameter("passwd");
 		
-		MemberDAO dao = MemberDAO.getInstance();	//dao객체의 정적메소드 호출
+		MemberDAO dao = MemberDAO.getInstance();	//dao 객체의 정적메소드 호출
 		int result = dao.memberAuth(id,passwd);		//회원인증 그냥 값 두개를 매개변후로 넘기기로 함 원래는 세터 게터로
 		if(result == 1)System.out.println("회원 인증 성공");
 		

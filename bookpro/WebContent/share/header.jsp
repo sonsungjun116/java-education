@@ -15,57 +15,73 @@
 <div class="header">
       <h1 class="info">모삼?책삼!</h1>
       <ul id="Login-status">
-        <li>관리자님 환영합니다.</li>
-        <li>로그아웃</li>
+       <li>${sessionScope.id}님 환영합니다.</li></ul>
+       <div class="clearfix"></div>
+       <ul id="Login-status">
+        <li><a href="<%=request.getContextPath()%>/admin/adminLogout.jsp">로그아웃</a></li>
+       <li>마일리지 : ${admin_mile}</li></ul>
         
     </div>
 
 <div class="navbar">
-	<a href="<%=request.getContextPath() %>/BookAdd.pdo"><strong>도서등록</strong></a>
-	<a href="<%=request.getContextPath() %>/BookListAction.pdo">도서목록</a>
-	<a href="<%=request.getContextPath() %>/SaleListAction.sdo">판매관리</a>
-	<a href="<%=request.getContextPath() %>/board/boardlistview.jsp">답변하기</a>
+	<a href="<%=request.getContextPath() %>/BookListAction.pdo">도서관리</a>
 	<a href="<%=request.getContextPath() %>/ManageAction.managedo">회원관리</a>	
+	<a href="<%=request.getContextPath() %>/BoardListAction.bdo">문의관리</a>
+	<a href="<%=request.getContextPath() %>/OrderListAction.odo">주문관리</a>
 </div>
 </c:if>
 
-<c:if test="${sessionScope.id !='admin' && sessionScope.id == null}">	
+<c:if test="${sessionScope.id == null}">	
 <div class="header">
       <h1 class="info">모삼?책삼!</h1>
       <ul id="Login-status">
-        <li><a href="<%=request.getContextPath() %>/LoginForm.mdo">회원 로그인</a></li>
         <li><a href="<%=request.getContextPath() %>/share/login_admin.jsp">관리자 로그인</a></li>
         <li><a href="<%=request.getContextPath() %>/MemberForm.mdo">회원가입</a></li>
+    	<li><a href="<%=request.getContextPath() %>/BoardListAction.bdo">문의하기</a></li>  
+        <li><a href="<%=request.getContextPath() %>/LoginForm.mdo">회원 로그인</a></li>
     </div>
 
 <div class="navbar">
-	<a href="<%=request.getContextPath() %>/book/bookdomestic.jsp">국내도서</a>
-	<a href="<%=request.getContextPath() %>/book/bookforeign.jsp">해외도서</a>
-	<a href="<%=request.getContextPath() %>/book/booklatest.jsp">최신도서</a>
-	<a href="<%=request.getContextPath() %>/BoardListAction.bdo">문의 게시판</a>
+	<a href="<%=request.getContextPath() %>/BookDomestic.pdo?book_category=국내">국내도서</a>
+	<a href="<%=request.getContextPath() %>/BookDomestic.pdo?book_category=해외">해외도서</a>
+	<a href="<%=request.getContextPath() %>/BookMain.pdo">최신도서</a>
+	<a href="<%=request.getContextPath() %>/BookListAction.pdo">도서전체</a>
 </div>
 </c:if>
 
-<c:if test="${sessionScope.id != 'admin' && sessionScope.id != null}"> <!-- 관리자 아이디 이외에 로그인 할시 출력(회원 로그인) -->
+<c:if test="${sessionScope.id != 'admin' && sessionScope.id != null}"> <!--회원 로그인시 메뉴 -->
 <div class="header">
-      <h1 class="info">모삼?책삼!</h1>
-      <ul id="Login-status">
-      <li>${grade}등급</li>
-      </ul>
-      <ul id="Login-status">
-        <li>${sessionScope.id}님 환영합니다.</a></li> <br>
-        <li><a href="#">문의하기</a></li>
-        <li><a href="#">충전하기</a></li>
-        <li><a href="<%=request.getContextPath() %>/UpdateMember.mdo">정보 수정</a></li>
-        <li><a href="<%=request.getContextPath() %>/DeleteMember.mdo">회원 탈퇴</a></li>
+      	<h1 class="info">모삼?책삼!</h1>
+      	<ul id="Login-status1">${member_name}님 환영합니다.</ul>
+      	<div class="clearfix"></div>
+      	<ul id="Login-status">
         <li><a href="<%=request.getContextPath() %>/Logout.mdo">로그아웃</a></li>
+       <li>마일리지:${member_mile}</li></ul>
+		<div class="clearfix"></div>       
+       	<ul id="Login-status" class="mar0">
+        <li><a href="<%=request.getContextPath() %>/CartListAction.cdo">장바구니(${sessionScope.cartcount})</a></li>
+       <li>회원등급 :${member_grade}</li></ul>
+       <div class="clearfix"></div>
+       	<ul id="Login-status" class="mar0">
+        <li><a href="<%=request.getContextPath() %>/BoardListAction.bdo">문의하기</a></li>
+       <li><a href="<%=request.getContextPath() %>/UpdateMember.mdo">정보 수정</a></li>
+        <li><a href="<%=request.getContextPath() %>/MileAdd.mdo">충전하기</a></li></ul>
+       
+      		<%-- <table id="Login-status" width=600>
+	      		<tr>
+	      			<td class="tb2"><a href="<%=request.getContextPath() %>/BoardListAction.bdo">문의하기</a></td>
+	      			<td class="tb2"><a href="<%=request.getContextPath() %>/UpdateMember.mdo">정보 수정</a></td>
+	      			<td class="tb2"><a href="<%=request.getContextPath() %>/MileAdd.mdo">충전하기</a></td>
+	      		</tr>
+      		</table> --%>
 </div>
 
 <div class="navbar">
-   <a href="<%=request.getContextPath() %>/book/bookdomestic.jsp">국내도서</a>
-   <a href="<%=request.getContextPath() %>/book/bookforeign.jsp">해외도서</a>
-   <a href="<%=request.getContextPath() %>/book/booklatest.jsp">최신도서</a>
-   <a href="<%=request.getContextPath() %>/BoardListAction.bdo">문의 게시판</a>
+   <a href="<%=request.getContextPath() %>/BookDomestic.pdo?book_category=국내">국내도서</a>
+   <a href="<%=request.getContextPath() %>/BookDomestic.pdo?book_category=해외">해외도서</a>
+   <a href="<%=request.getContextPath() %>/BookMain.pdo">최신도서</a>
+   <a href="<%=request.getContextPath() %>/BookListAction.pdo">도서전체</a>
+   <a href="<%=request.getContextPath() %>/OrderConfirm.odo">주문확인</a>
 </div>      
 </c:if>
 

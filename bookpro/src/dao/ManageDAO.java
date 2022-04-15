@@ -113,7 +113,7 @@ public class ManageDAO {
 //	
 				
 				
-				// 판매내역 데이터 갯수 구하기
+				// 주문내역 데이터 갯수 구하기
 				public int getCount() {
 					int result = 0;
 					Connection con = null;
@@ -123,7 +123,7 @@ public class ManageDAO {
 					try {
 						con = getConnection();
 						
-						String sql ="select count(*) from manage";
+						String sql ="select count(*) from member";
 						
 						pstmt = con.prepareStatement(sql);
 						rs = pstmt.executeQuery();		// SQL문 실행
@@ -145,8 +145,8 @@ public class ManageDAO {
 				}
 				
 				
-				public List<ManageDTO> getList(int start, int end){
-					List<ManageDTO> list = new ArrayList<ManageDTO>();	// 왼쪽 부모 오른쪽 자식 업캐스팅
+				public List<MemberDTO> getList(int start, int end){
+					List<MemberDTO> list = new ArrayList<MemberDTO>();	// 왼쪽 부모 오른쪽 자식 업캐스팅
 					Connection con = null;
 					PreparedStatement pstmt = null;
 					ResultSet rs = null;
@@ -155,7 +155,8 @@ public class ManageDAO {
 						con = getConnection();
 						
 			String sql="select * from (select rownum rnum, board.* from ";
-					sql+=" (select * from manage order by manage_num desc) board ) ";
+//					sql+=" (select * from manage order by manage_num desc) board ) ";
+					sql+=" (select * from member order by member_id asc) board ) ";
 					sql+=" where rnum >= ? and rnum <= ?";
 					
 						pstmt = con.prepareStatement(sql);
@@ -164,15 +165,19 @@ public class ManageDAO {
 						rs = pstmt.executeQuery();		// SQL문 실행
 						
 						while(rs.next()) {		
-							ManageDTO manage = new ManageDTO();
+//							ManageDTO manage = new ManageDTO();
+//							
+//							manage.setManage_num(rs.getInt("manage_num"));
+//							manage.setMember_id(rs.getString("member_id"));
+//							manage.setMember_grade(rs.getString("member_grade"));
+//							manage.setMember_mile(rs.getInt("member_mile"));
 							
-							manage.setManage_num(rs.getInt("manage_num"));
-							manage.setMember_id(rs.getString("member_id"));
-							manage.setMember_grade(rs.getString("member_grade"));
-							manage.setMember_mile(rs.getInt("member_mile"));
-							
+							MemberDTO member = new MemberDTO();
+							member.setMember_id(rs.getString("member_id"));
+							member.setMember_grade(rs.getString("member_grade"));
+							member.setMember_mile(rs.getInt("member_mile"));							
 														
-							list.add(manage);
+							list.add(member);
 						}
 						
 					}catch(Exception e) {
@@ -220,6 +225,30 @@ public class ManageDAO {
 					return manage;
 				}
 				
+				public int mileCharge(ManageDTO manage) {
+					int result = 0;
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					
+					try {
+						con = getConnection();
+						
+						String sql="update member set member_mile=?, member_grade=? where member_id=?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, manage.getMember_mile());						
+						pstmt.setString(2, manage.getMember_grade());
+						pstmt.setString(3, manage.getMember_id());
+							   
+						result = pstmt.executeUpdate();
+						
+					}catch(Exception e) {
+						e.printStackTrace();
+					}finally {
+						if(pstmt != null) try {pstmt.close();} catch(Exception e) {}
+						if(con != null) try {con.close();} catch(Exception e) {}
+					}
+					return result;
+				}
 				
 		
 
