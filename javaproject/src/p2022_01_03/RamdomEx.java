@@ -26,6 +26,20 @@ public class RamdomEx {
 		
 		int n4 = (int)(Math.random() * 45) + 1;
 		System.out.println("n4="+n4);
+		
+		int bookcount = 7;
+		
+		int array[] = new int[bookcount];
+		for(int i=0; i < array.length; i++) {
+			Random r1 = new Random();			
+			int random = r1.nextInt(15);	// 0~15 사이의 랜덤값			
+			random = array[i];
+			
+			System.out.println("random:"+ random);
+		
+		}
+		
+		
 	}
 
 }

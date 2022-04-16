@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/share/header.jsp" %>
-
+<%@page import="java.util.Random"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +15,10 @@
 
 </head>
 <body>
+<c:forEach var="index" begin="1" end="10">
+        <c:out value="${index}" />
+</c:forEach>
+
 <table align="center" class="tb">
 	<caption>도서 목록</caption>
 	<tr>
@@ -38,8 +42,22 @@
 		<c:if test="${sessionScope.id != 'admin' && sessionScope.id != null}">
 		<th></th></c:if>
 	</tr>
+	
 	 <c:set var="num" value="${bookcount - (page-1) * 10 }" />
      <c:forEach var="b" items="${booklist}">
+     
+     
+    <%--  <%!  int array[] = new int[bookcount];
+		for(int i=0; i < array.length; i++) {
+			Random r1 = new Random();			
+			int random = r1.nextInt(15);	// 0~15 사이의 랜덤값			
+			array[i] = random;
+			
+			System.out.println("random:"+ random);
+		
+		}
+		%> --%>
+      
          <!--request객체로 공유해야 items에 공유 값을 입력하여 사용 할 수 있다.  -->
           <tr>
             <td class="tb1">${num}
@@ -53,9 +71,15 @@
             <td class="tb1">${b.book_author}</td>
             <td class="tb1">${b.book_pb}</td>
             <td class="tb1">${b.book_price}</td>            
-            <c:if test="${sessionScope.id=='admin'}">
-            <td class="tb1">${b.book_stock}</td> 
-            <td class="tb1">${b.book_count}</td> 
+            <c:if test="${sessionScope.id=='admin'}">            
+            <td class="tb1">${b.book_stock}</td>                        
+             <td class="tb1">${b.book_count}</td>              
+          <%--   <%!
+				Random r = new Random();
+	
+				int random = r.nextInt(15);	// 0~15 사이의 랜덤값	
+			%> --%>
+         <%--    <td class="tb1"><%out.println(random); %></td>  --%>            
             </c:if>
             <td class="tb1"><fmt:formatDate value="${b.book_reg}"
                   pattern="yyyy-MM-dd" /></td>

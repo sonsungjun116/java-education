@@ -31,7 +31,7 @@ public class BookMain implements Action{
 		int bookcount = dao.bookGetCount(); // 총 데이터 갯수 기본변수3
 		System.out.println("bookcount:" + bookcount);
 
-		List<BookDTO> booklist = dao.bookGetList(startRow, endRow);
+		List<BookDTO> booklist = dao.bookGetList(startRow, endRow, bookcount);
 		System.out.println("booklist:" + booklist);
 
 		// 총 페이지

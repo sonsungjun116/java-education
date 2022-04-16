@@ -3,8 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -159,11 +158,23 @@ public class BookDAO {
 		}
 		
 		// 상품 리스트 출력
-		public List<BookDTO> bookGetList(int start, int end){
+		public List<BookDTO> bookGetList(int start, int end, int bookcount){
 			List<BookDTO> list = new ArrayList<BookDTO>();
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
+//			Random r = new Random();
+//			int random = r.nextInt(15);	// 0~15 사이의 랜덤값
+			
+			//int array[] = new int[bookcount];
+		/*
+		 * for(int i=0; i < array.length; i++) { Random r1 = new Random(); int random =
+		 * r1.nextInt(15); // 0~15 사이의 랜덤값 array[i] = random;
+		 * 
+		 * System.out.println("random:"+ random);
+		 * 
+		 * }
+		 */
 			
 			try {
 				con = getConnection();
@@ -177,14 +188,22 @@ public class BookDAO {
 				pstmt.setInt(2, end);
 				
 				rs = pstmt.executeQuery();
-				
+					int array[] = new int[bookcount];
+					for(int i=0; i < array.length; i++) {
 				while(rs.next()) {
+					
+						Random r1 = new Random();			
+						int random = r1.nextInt(15);	// 0~15 사이의 랜덤값			
+						array[i] = random;
+						
+						System.out.println("random:"+ random);
+																		
 					BookDTO book = new BookDTO();
 					book.setBook_num(rs.getInt("book_num"));
 					book.setBook_author(rs.getString("book_author"));
 					book.setBook_name(rs.getString("book_name"));
 					book.setBook_price(rs.getInt("book_price"));
-					book.setBook_count(rs.getInt("book_count"));
+					book.setBook_count(random);
 					book.setBook_pb(rs.getString("book_pb"));
 					book.setBook_category(rs.getString("book_category"));
 					book.setBook_content(rs.getString("book_content"));
@@ -193,6 +212,7 @@ public class BookDAO {
 					book.setBook_stock(rs.getInt("book_stock"));
 					
 					list.add(book);
+					}
 				}
 				
 			}catch (Exception e) {
