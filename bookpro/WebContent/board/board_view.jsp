@@ -47,8 +47,9 @@ th {
 		<td colspan=4 align=center>
 			<input type="button" value=" 댓글 "
 			onClick="location.href='./BoardReplyForm.bdo?board_num=${board.board_num}&page=${page}'">&nbsp;
+			<c:if test="${sessionScope.id != 'admin'}">
 			<input type="button" value=" 수정 "
-			onClick="location.href='./BoardUpdateForm.bdo?board_num=${board.board_num}&page=${page}'">&nbsp;
+			onClick="location.href='./BoardUpdateForm.bdo?board_num=${board.board_num}&page=${page}'">&nbsp;</c:if>
 			<input type="button" value=" 삭제 "
 			onClick="location.href='./BoardDeleteForm.bdo?board_num=${board.board_num}&page=${page}'">&nbsp;
 			<input type="button" value=" 목록 "

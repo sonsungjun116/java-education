@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import memberservice.BuyAction;
 import memberservice.Delete;
 import memberservice.Idcheck;
 import memberservice.Login;
@@ -136,15 +135,6 @@ public class MemberController extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-		// 구매버튼 눌렀을때	
-		}else if(command.equals("/BuyAction.mdo")) {
-			try {
-				action = new BuyAction();
-				forward = action.execute(request, response);
-				
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
 		}
 		
 		// 포워딩 처리

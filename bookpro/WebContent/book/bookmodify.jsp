@@ -14,11 +14,9 @@
 
 <c:set var="b" value="${book}" />
 
-
 <form method="post" action="<%=request.getContextPath() %>/BookModifyAction.pdo" enctype="multipart/form-data">
 <input type="hidden" name="book_num" value="${b.book_num}">
 <input type="hidden" name="page" value="${page}">
-
 	<table align="center" width=500 class="tb">
 		<caption>상품수정</caption>
 		<tr>

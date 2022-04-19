@@ -16,7 +16,7 @@
 <input type="hidden" name="member_id" value="${member_id}">
 
 <h3 class="tb1">도서 상세정보</h3>
-<div class="tb1"><img src="<%=request.getContextPath()%>/bookupload/${book.book_img}" width=100%></div>
+<div class="tb1"><img src="<%=request.getContextPath()%>/bookupload/${book.book_img}" width=20%></div>
 <table align="center" class="tb">
 		<th>도서 제목</th>
 		<td colspan=2>${book.book_name}</td>

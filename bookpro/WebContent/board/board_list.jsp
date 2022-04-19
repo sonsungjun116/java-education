@@ -33,7 +33,7 @@ th {
 </style>
 
 <table width=900 align=center>
-	<caption><h2>문의 게시판</h2></caption>
+	<caption><h3>문의 게시판</h3></caption>
 	<tr>
 		<th>번호</th>
 		<th>제목</th>
@@ -44,12 +44,12 @@ th {
 	</tr>
 	<c:set var="num" value="${listcount - (page - 1) * 10}" />
 	<c:forEach var="b" items="${boardlist}">
-	<tr align=center>
-		<td>
+	<tr>
+		<td align=center>
 			${num}
 			<c:set var="num" value="${num - 1}" />
 		</td>
-		<td  class="tb1"><!-- 댓글 여백 처리 -->
+		<td class="tb2"><!-- 댓글 여백 처리 -->
 			<c:if test="${b.board_lev > 0}">
 				<c:forEach var="i" begin="0" end="${b.board_lev }">
 				&nbsp;&nbsp;
@@ -58,19 +58,20 @@ th {
 			<c:if test="${sessionScope.id != null}">
 			<a href="./BoardDetailAction.bdo?board_num=${b.board_num}&page=${page}">${b.board_subject}</a>
 			</c:if>
+				
 			<c:if test="${sessionScope.id == null}">
 			<a href="./BoardAlert.bdo">${b.board_subject}</a>
 			</c:if>
 		</td>
-		<td>
+		<td align=center>
 			${b.board_writer}
 		</td>
-		<td>
+		<td align=center>
 			<fmt:formatDate value="${b.board_date}" pattern="yyyy-MM-dd" /></td>
-		<td>
+		<td align=center>
 			${b.board_rc}
 		</td>
-		<td>
+		<td align=center>
 			<c:if test="${b.board_check==0 && b.board_lev==0}">답변대기</c:if>
 			<c:if test="${b.board_check==1 && b.board_lev==0}">답변완료</c:if>
 		</td>
@@ -106,7 +107,7 @@ th {
 		<a href="./BoardListAction.bdo?page=${pageCount}" style="text-decoration: none"> >> </a>
 		
 	</c:if>
-	<c:if test="${sessionScope.id != null}">
+	<c:if test="${sessionScope.id != null && sessionScope.id !='admin'}">
 	<a href="./BoardInsertForm.bdo"><input type="button" value="문의하기"></a>
 	</c:if>
 	<c:if test="${sessionScope.id == null}">

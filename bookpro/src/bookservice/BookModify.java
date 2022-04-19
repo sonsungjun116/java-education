@@ -16,20 +16,12 @@ public class BookModify implements Action{
 		
 		int book_num = Integer.parseInt(request.getParameter("book_num"));
 		String nowpage = request.getParameter("page");
-		System.out.println(book_num);
-		System.out.println(nowpage);
-		
-	//	int book_stock1 = Integer.parseInt(request.getParameter("book_stock"));
-		
-		
-	//	System.out.println(book_stock1);
 		
 		BookDAO dao = BookDAO.getInstance();
 		BookDTO book = dao.getDetailBook(book_num);
 		
 		request.setAttribute("book", book);
 		request.setAttribute("page", nowpage);
-	//	request.setAttribute("book_stock1",book_stock1);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

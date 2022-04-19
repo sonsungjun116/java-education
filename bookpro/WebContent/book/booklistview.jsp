@@ -3,24 +3,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/share/header.jsp" %>
-<%@page import="java.util.Random"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>모삼?책삼!</title>
 <link href="<%=request.getContextPath()%>/css/admin_view.css"
 	rel="stylesheet" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
-<c:forEach var="index" begin="1" end="10">
-        <c:out value="${index}" />
-</c:forEach>
-
 <table align="center" class="tb">
-	<caption>도서 목록</caption>
+	<c:if test="${sessionScope.id=='admin'}">
+		<caption><h3>도서 관리</h3></caption>
+	</c:if>
+	<c:if test="${sessionScope.id!='admin'}">
+		<caption><h3>도서 전체</h3></caption>
+	</c:if>
 	<tr>
 		<th>번호</th>
 		<th>카테고리</th>
@@ -42,22 +43,8 @@
 		<c:if test="${sessionScope.id != 'admin' && sessionScope.id != null}">
 		<th></th></c:if>
 	</tr>
-	
 	 <c:set var="num" value="${bookcount - (page-1) * 10 }" />
      <c:forEach var="b" items="${booklist}">
-     
-     
-    <%--  <%!  int array[] = new int[bookcount];
-		for(int i=0; i < array.length; i++) {
-			Random r1 = new Random();			
-			int random = r1.nextInt(15);	// 0~15 사이의 랜덤값			
-			array[i] = random;
-			
-			System.out.println("random:"+ random);
-		
-		}
-		%> --%>
-      
          <!--request객체로 공유해야 items에 공유 값을 입력하여 사용 할 수 있다.  -->
           <tr>
             <td class="tb1">${num}
@@ -65,21 +52,15 @@
             </td>
             <td class="tb1">${b.book_category}</td>
             <c:if test="${sessionScope.id == 'admin'}">
-            <td class="tb1"><a href="<%=request.getContextPath() %>/BookModify.pdo?book_stock=${b.book_stock}&book_num=${b.book_num}&page=${page}">${b.book_num}</a></td>
+            <td class="tb1"><a href="<%=request.getContextPath() %>/BookModify.pdo?book_num=${b.book_num}&page=${page}">${b.book_num}</a></td>
             </c:if>
             <td class="tb1">${b.book_name}</td>
             <td class="tb1">${b.book_author}</td>
             <td class="tb1">${b.book_pb}</td>
             <td class="tb1">${b.book_price}</td>            
-            <c:if test="${sessionScope.id=='admin'}">            
-            <td class="tb1">${b.book_stock}</td>                        
-             <td class="tb1">${b.book_count}</td>              
-          <%--   <%!
-				Random r = new Random();
-	
-				int random = r.nextInt(15);	// 0~15 사이의 랜덤값	
-			%> --%>
-         <%--    <td class="tb1"><%out.println(random); %></td>  --%>            
+            <c:if test="${sessionScope.id=='admin'}">
+            <td class="tb1">${b.book_stock}</td> 
+            <td class="tb1">${b.book_count}</td> 
             </c:if>
             <td class="tb1"><fmt:formatDate value="${b.book_reg}"
                   pattern="yyyy-MM-dd" /></td>
@@ -97,7 +78,7 @@
      </c:forEach>
 	
 </table>
-
+<br><br>
 <!-- 페이지 처리 -->
 <center>
 <c:if test="${bookcount > 0}">

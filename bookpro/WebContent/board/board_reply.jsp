@@ -31,7 +31,8 @@ th {
 			<tr>
 				<th>글쓴이</th>
 				<td>
-					<input name="board_writer" id="board_writer" type="text" maxlength="10" value="관리자"/>
+				<input type="hidden" name="board_writer" id="board_writer" value="관리자" >
+					관리자
 				</td>
 			</tr>
 			<tr>

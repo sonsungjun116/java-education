@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>모삼?책삼!</title>
 <link href="<%=request.getContextPath() %>/css/admin_view.css" rel="stylesheet" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +15,7 @@
 </head>
 <body>
 <table  align=center class="tb">
-		<caption>주문확인<br><br></caption>
+		<caption><h3>주문확인</h3></caption>
 		<tr>
 			<th>주문번호</th>
 			<th>도서코드</th>
@@ -49,7 +49,7 @@
 			 	<c:if test="${b.order_status=='배송대기'}"><input type=button value="주문취소"
 			 onclick="location.href='./OrderCancel.odo?member_id=${b.member_id}&order_num=${b.order_num}&book_price=${b.book_price}'"></c:if>
 			 <c:if test="${b.order_status=='배송완료'}"><input type=button value="구매확정"
-			 onclick="location.href='./BuyEnd.odo?order_num=${b.order_num}&book_price=${b.book_price}'"></c:if>
+			 onclick="location.href='./BuyEnd.odo?order_num=${b.order_num}&book_price=${b.book_price}&book_num=${b.book_num}'"></c:if>
 			 </td>		
 				
 			</tr>

@@ -16,7 +16,7 @@
 <body>
 
 <table width=600 align=center class="tb">
-		<caption>회원 관리<br><br></caption>
+		<caption><h3>회원 관리</h3></caption>
 		<tr>
 			<th>관리번호</th>
 			<th>회원아이디</th>
@@ -90,15 +90,6 @@
 
 </c:if>
 </center>
-<br><br>
-<table width=100 align=center>
-	<tr align="center">
-	<td width=50><input type="button" value="확인"></td>
-	<td width=50><input type="button" value="취소"></td>
-	</tr>
-</table>	
-
-<br><br><br><br>
 
 <%@ include file="/share/footer.jsp" %>
 

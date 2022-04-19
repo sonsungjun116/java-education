@@ -16,7 +16,7 @@
 <body>
 
 <table width=1300 align=center class="tb">
-		<caption>판매 내역</caption>
+		<caption><h3>판매 내역</h3></caption>
 		<tr>
 			<th>주문번호</th>
 			<th>도서코드</th>
@@ -49,9 +49,9 @@
 				<td class="tb1"><fmt:formatDate value="${b.order_date}"
 						pattern="yyyy-MM-dd HH:mm:ss" /></td>
 				<td class="tb1">${b.order_status}</td>
-				<td class="tb1"><c:if test="${b.order_status=='배송대기'}"><input type=button value="배송시작"
+				<td class="tb1"><c:if test="${b.order_status=='배송대기'}"><input type=button value="배송"
 			 onclick="location.href='./Delivery.odo?order_num=${b.order_num}'">
-			 		<input type=button value="주문취소"
+			 		<input type=button value="취소"
 			 onclick="location.href='./OrderCancel.odo?member_id=${b.member_id}&order_num=${b.order_num}&book_price=${b.book_price}'">
 			 </c:if></td>	
 				

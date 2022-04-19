@@ -1,7 +1,6 @@
 package bookservice;
 
 import java.util.List;
-import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,11 +15,6 @@ public class BookListAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("BookListAction");
-		
-		
-//		System.out.println("random:"+random);
-		
-		
 		
 		int page = 1; // 현재 페이지 번호 기본변수1
 		int limit = 10; // 한 페이지에 출력할 데이터 갯수 기본변수2
@@ -43,25 +37,9 @@ public class BookListAction implements Action{
 		int bookcount = dao.bookGetCount(); // 총 데이터 갯수 기본변수3
 		System.out.println("bookcount:" + bookcount);
 
-		List<BookDTO> booklist = dao.bookGetList(startRow, endRow, bookcount);
+		List<BookDTO> booklist = dao.bookGetList(startRow, endRow);
 		System.out.println("booklist:" + booklist);
-		
-		//판매량에 난수값 넣기
-		
-		int array[] = new int[bookcount];
-		for(int i=0; i < array.length; i++) {
-			Random r = new Random();			
-			int random = r.nextInt(15);	// 0~15 사이의 랜덤값			
-			array[i] = random;
-		}
-		
-		for(int i=0; i < bookcount; i++) {
-			
-			System.out.println(array[i]);
-			
-		}
-		
-		
+
 		// 총 페이지
 		int pageCount = bookcount / limit + ((bookcount % limit == 0) ? 0 : 1);
 
@@ -77,7 +55,6 @@ public class BookListAction implements Action{
 		request.setAttribute("pageCount", pageCount);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-//		request.setAttribute("random", random);
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false); // dispatcher 방식으로 포워딩

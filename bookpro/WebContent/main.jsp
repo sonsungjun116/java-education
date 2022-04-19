@@ -15,7 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+
 	<div class=products>
  	<c:forEach var="book" items="${booklist}">
       <a href="./BookDetail.pdo?book_num=${book.book_num}&page=${page}"><img src="<%=request.getContextPath()%>/bookupload/${book.book_img}"><span>${book.book_name}</span>${book.book_price}</a> 
@@ -23,7 +23,7 @@
     </div>  
     
     <div class=clearfix></div>
-    
+    </div>
     
     
 <!-- 페이지 처리 -->

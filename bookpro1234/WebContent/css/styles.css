@@ -1,0 +1,161 @@
+/* 공용 table layout */
+.tb {
+	border-top: 1px solid;
+	border-collapse: collapse;
+}
+
+.tb th, td {
+	border-bottom: 1px solid;
+	padding: 10px;
+}
+
+.tb th {
+	background-color: #EEE
+}
+
+.tb1 {
+	text-align: center;
+}
+
+
+.tb1 > a {
+	text-decoration: none;
+}
+
+.tb1 > a:hover {
+	font-weight: bold;
+}
+
+.mar {
+	margin-top: 15px;
+}
+
+.tb2 a {
+	color: black;
+	text-decoration: none;
+}
+
+.tb2 a:hover {
+	font-weight: bold;
+}
+
+/* products */
+
+.products {
+  width:1000px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.products a {
+  border: 1px solid black;
+  display: inline-block;
+  width: 225px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 80px;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.products a img {
+  height: 225px;
+  margin-bottom: 20px;
+}
+
+
+.clearfix {
+	clear: both;
+}
+
+span {
+  display: block;
+  margin-bottom: 4px;
+}
+/* products end */
+
+
+.con{
+	overflow: auto;
+}
+
+.submit-btn:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
+}
+
+
+/* login-form end */
+
+/* mem */
+
+#title {
+	text-align: center;
+}
+
+.mem {
+	width: 900px;
+	margin: 0px auto;
+}
+
+
+
+.click:hover{
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
+}
+
+.click {
+	font-size: 14px;
+	padding:0px 5px;
+}
+
+
+.btn1 {
+	margin-top: 8px;
+	text-align: center;
+}
+
+
+.btn1 input:hover{
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
+}
+
+
+/* mem-end */
+
+/* board */
+
+.board td a{
+	text-decoration: none;
+	color: black;
+}
+
+.board td a:hover{
+	font-weight: bold;	
+}
+
+.board td a:visited{
+	color:red;
+	font-weight: bold;	
+}
+
+.btn2{
+	text-align: center;
+}
+
+/* board end */
+
+/* footer */
+.footer {
+  text-align: center;
+  margin-bottom: 80px;
+  margin-top: 40px;
+}
+
+.footer a img {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/* footer end */
