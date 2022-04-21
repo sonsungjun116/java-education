@@ -21,7 +21,8 @@
 	
 for (int i = 0;i<list.size();i++){
 %>
-	<tr><td><%=list.get(i).getId() %></td><td><%=list.get(i).getPassword() %></td>
+	<tr><td><%=list.get(i).getId() %></td>
+	<td><%=list.get(i).getPassword() %></td>
 	<td><input type="button" value="수정" onclick='location.href="updateForm.jsp?id=<%=list.get(i).getId() %>"'></td>
 	<td><input type="button" value="삭제" onclick='location.href="delete.jsp?id=<%=list.get(i).getId() %>"'></td></tr>
 <%

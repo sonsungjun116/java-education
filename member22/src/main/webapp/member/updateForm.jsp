@@ -22,6 +22,7 @@
 	<input type="hidden" name="id" value="<%=mem.getId() %>">
 	<table><tr><td>아이디</td>
 			   <td><input type="text" name="id" value="<%=mem.getId() %>" disabled="disabled"></td></tr>
+			<!-- disabled는 값을 안넘기지만 readonly는 경우에 따라 값도 넘겨준다. -->
 			<tr><td>암호</td>
 				<td><input type="text" name="password" value="<%=mem.getPassword() %>"></td></tr>
 			<tr><td colspan="2" align="right">

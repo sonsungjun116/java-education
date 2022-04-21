@@ -58,6 +58,7 @@ public class MemberDao {
 		return result;
 	}
 
+	// 수정폼 : 1명의 상세정보 구하기
 	public Member select(String id) throws SQLException {
 		Member mem = null;
 		SqlSession session=null;
@@ -69,6 +70,7 @@ public class MemberDao {
 		return mem;
 	}
 
+	// 회원 목록
 	public List<Member> list() {
 		List<Member> list = new ArrayList<Member>();
 		SqlSession session=null;
@@ -80,10 +82,12 @@ public class MemberDao {
 		return list;
 	}
 
+	// 회원정보 삭제
 	public int delete(String id) {
 		int result = 0;
 		SqlSession session=null;
-		try { session = getSession(); 
+		try { 
+			session = getSession(); 
 			result = session.delete("delete", id);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -94,7 +98,8 @@ public class MemberDao {
 	public int update(Member mem) {
 		int result = 0;
 		SqlSession session=null;
-		try { session = getSession(); 
+		try { 
+			session = getSession(); 
 			result = session.update("update", mem);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
